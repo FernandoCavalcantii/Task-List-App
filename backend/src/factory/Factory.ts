@@ -1,6 +1,6 @@
-// import TasksController from '../Controllers/tasks.controller';
-// import TasksModel from '../Models/Entities/tasks';
-// import TasksService from '../Service/tasks.service';
+// import TasksController from '../controllers/tasks.controller';
+// import TasksModel from '../repository/Repository';
+// import TasksService from '../services/tasks.service';
 
 // class Factory {
 //     tasksFactory = (): TasksController => {

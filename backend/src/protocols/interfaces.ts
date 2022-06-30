@@ -9,6 +9,14 @@ export interface IModel {
   createTask(data: Omit<Task, 'id'>): Promise<Task>;
   readTaskByPk(id: number): Promise<Task | null>;
   readTasks(): Promise<Task[]>;
+  updateTask(data: Task): Promise<any>;
+  deleteTask(id: number): Promise<void>;
+}
+
+export interface IService {
+  createTask(data: Omit<Task, 'id'>): Promise<Task>;
+  readTaskByPk(id: number): Promise<Task | null>;
+  readTasks(): Promise<Task[]>;
   updateTask(data: Task): Promise<void>;
   deleteTask(id: number): Promise<void>;
 }

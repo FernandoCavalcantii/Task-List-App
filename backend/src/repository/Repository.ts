@@ -23,7 +23,8 @@ export default class Repository implements IModel {
 
   async updateTask(data: Task): Promise<void> {
     const { id, name, description, status } = data;
-    await this.model.update({ name, description, status }, { where: { id } });
+    const result = await this.model.update({ name, description, status }, { where: { id } });
+    return result;
   }
 
   async deleteTask(id: number): Promise<void> {
