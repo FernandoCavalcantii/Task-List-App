@@ -1,0 +1,26 @@
+{
+  "name": "task-list-app",
+  "version": "1.0.0",
+  "description": "Task organizer app",
+  "main": "index.js",
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "predev": "npm run build",
+  "dev": "nodemon --watch \"./src/**\" ./src/server.ts",
+  "build": "tsc",
+  "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+  "start": "npm run build && node ./build/server.js",
+  "keywords": [],
+  "author": "",
+  "scripts": {
+    "test": "jest --runInBand  --detectOpenHandles --forceExit"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "js-yaml": "^4.1.0",
+    "ts-node": "^10.8.1"
+  },
+  "devDependencies": {
+    "jest": "^28.1.2"
+  }
+}
