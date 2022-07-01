@@ -39,8 +39,10 @@ class Service implements ITasksService {
     return task;
   }
 
-  async updateTask(data: Task): Promise<void> {
-    const updatedTask = await this.tasksModel.updateTask(data);
+  async updateTask(data: Task, id: string): Promise<void> {
+    const updatedTask = await this.tasksModel.updateTask(data, id);
+    const [fail] = updatedTask;
+    if (!fail) throw new ErrorObj(StatusCodes.NOT_FOUND, 'Task id not found');
   }
 
   async deleteTask(id: number): Promise<void> {
