@@ -39,8 +39,9 @@ class Service implements ITasksService {
     return task;
   }
 
-  async updateTask(data: Task): Promise<void> {
-    const updatedTask = await this.tasksModel.updateTask(data);
+  async updateTask(data: Task, id: string): Promise<void> {
+    const updatedTask = await this.tasksModel.updateTask(data, id);
+    console.log('updatedTask', updatedTask, typeof updatedTask)
   }
 
   async deleteTask(id: number): Promise<void> {
