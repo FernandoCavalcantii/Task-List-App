@@ -27,7 +27,8 @@ export default class Repository implements ITasksModel {
     return updateResult;
   }
 
-  async deleteTask(id: number): Promise<void> {
-    await this.model.destroy({ where: { id } });
+  async deleteTask(id: number): Promise<number> {
+    const deleteResult = await this.model.destroy({ where: { id } });
+    return deleteResult;
   }
 }

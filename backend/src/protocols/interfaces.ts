@@ -12,7 +12,7 @@ export interface ITasksModel {
   readTaskByPk(id: number): Promise<Task | null>;
   readTasks(): Promise<Task[]>;
   updateTask(data: Task, id: string): Promise<any>;
-  deleteTask(id: number): Promise<void>;
+  deleteTask(id: number): Promise<number>;
 }
 
 export interface ITasksService {
