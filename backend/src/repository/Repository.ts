@@ -1,7 +1,7 @@
 import Model from '../database/models/Task';
-import { Task, IModel } from '../protocols/interfaces';
+import { Task, ITasksModel } from '../protocols/interfaces';
 
-export default class Repository implements IModel {
+export default class Repository implements ITasksModel {
   constructor(private model = Model) {
     this.model = model
   }
@@ -21,10 +21,10 @@ export default class Repository implements IModel {
     return tasks;
   }
 
-  async updateTask(data: Task): Promise<void> {
+  async updateTask(data: Task) {
     const { id, name, description, status } = data;
-    const result = await this.model.update({ name, description, status }, { where: { id } });
-    return result;
+    const updateResult = await this.model.update({ name, description, status }, { where: { id } });
+    return updateResult;
   }
 
   async deleteTask(id: number): Promise<void> {
