@@ -1,10 +1,7 @@
 import * as express from 'express';
-import errorMiddleware from './middlewares/ErrorMiddleware';
-import tasksRouter from './routes/tasks.routes';
 
 class App {
-  public app: express.Express;
-
+  public app: express.Express
   constructor() {
     this.app = express();
     this.config();
@@ -18,10 +15,7 @@ class App {
       next();
     };
 
-    this.app.use(express.json());
     this.app.use(accessControl);
-    this.app.use(tasksRouter);
-    this.app.use(errorMiddleware);
   }
 
   public start(PORT: string | number): void {
