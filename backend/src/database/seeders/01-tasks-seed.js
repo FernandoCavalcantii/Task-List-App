@@ -16,7 +16,7 @@ module.exports = {
           status: 'In progress',
         },
         {
-          id: 1,
+          id: 3,
           name: 'Project 3',
           description: 'Implement product validation.',
           status: 'Stopped',

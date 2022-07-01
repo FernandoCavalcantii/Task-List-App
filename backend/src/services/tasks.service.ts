@@ -1,10 +1,12 @@
 import { StatusCodes } from 'http-status-codes';
 import ErrorObj from '../helpers/ErrorObj';
-import { IModel, IService, Task } from '../protocols/interfaces';
+import { ITasksModel, ITasksService, Task } from '../protocols/interfaces';
 
-class Service implements IService {
-  constructor(private model: IModel) {
-    this.model = model
+class Service implements ITasksService {
+  tasksModel: ITasksModel;
+
+  constructor(model: ITasksModel) {
+    this.tasksModel = model;
   }
 
   createTask(data: Omit<Task, 'id'>): Promise<Task> {
@@ -22,28 +24,27 @@ class Service implements IService {
       throw new ErrorObj(StatusCodes.BAD_REQUEST, 'Status must be "Done", "In progress" or "Stopped"');
     }
 
-    const task = this.model.createTask(data);
+    const task = this.tasksModel.createTask(data);
     return task;
   }
 
   async readTasks(): Promise<Task[]> {
-    const tasks = await this.model.readTasks();
+    const tasks = await this.tasksModel.readTasks();
     return tasks;
   }
 
   async readTaskByPk(id: number): Promise<Task | null> {
-    const task = await this.model.readTaskByPk(id);
+    const task = await this.tasksModel.readTaskByPk(id);
     if (!task) throw new ErrorObj(StatusCodes.NOT_FOUND, 'Task id not found');
     return task;
   }
 
   async updateTask(data: Task): Promise<void> {
-    const updatedTask = await this.model.updateTask(data);
-    console.log(updatedTask);
+    const updatedTask = await this.tasksModel.updateTask(data);
   }
 
   async deleteTask(id: number): Promise<void> {
-    const deletedTask = await this.model.deleteTask(id);
+    const deletedTask = await this.tasksModel.deleteTask(id);
   }
 }
 
