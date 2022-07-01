@@ -9,7 +9,7 @@ class Service implements ITasksService {
     this.tasksModel = model;
   }
 
-  createTask(data: Omit<Task, 'id'>): Promise<Task> {
+  async createTask(data: Omit<Task, 'id'>): Promise<Task> {
     const { name, description, status } = data;
 
     if (name.length < 4) {
@@ -24,8 +24,8 @@ class Service implements ITasksService {
       throw new ErrorObj(StatusCodes.BAD_REQUEST, 'Status must be "Done", "In progress" or "Stopped"');
     }
 
-    const task = this.tasksModel.createTask(data);
-    return task;
+    const newTask = await this.tasksModel.createTask(data);
+    return newTask;
   }
 
   async readTasks(): Promise<Task[]> {

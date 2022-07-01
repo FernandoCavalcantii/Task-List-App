@@ -26,7 +26,7 @@ export interface ITasksService {
 
 export interface ITasksController {
   tasksService: ITasksService
-  // createTask(req: Request, res: Response, next: NextFunction): Promise<void>
+  createTask(req: Request, res: Response, next: NextFunction): Promise<void>
   // readTaskByPk(req: Request, res: Response, next: NextFunction): Promise<void>
   // readTasks(req: Request, res: Response, next: NextFunction): Promise<void>
   updateTask(req: Request, res: Response, next: NextFunction): Promise<void>

@@ -7,8 +7,8 @@ export default class Repository implements ITasksModel {
   }
 
   async createTask(data: Omit<Task, 'id'>): Promise<Task> {
-    const task = await this.model.create(data);
-    return task;
+    const { id } = await this.model.create(data);
+    return { id, ...data }
   }
 
   async readTaskByPk(id: string): Promise<Task | null> {

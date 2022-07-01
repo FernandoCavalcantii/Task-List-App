@@ -9,11 +9,21 @@ class TasksController implements ITasksController {
     this.tasksService = service;
   }
 
+  async createTask(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const { body } = req;
+      const newTask = await this.tasksService.createTask(body);
+      res.status(StatusCodes.CREATED).json(newTask);
+    } catch (err) {
+      next(err);
+    }
+  }
+
   async updateTask(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const { body, params: { id } } = req;
       const updatedTask = this.tasksService.updateTask(body, id);
-      res.status(StatusCodes.CREATED).json(updatedTask);
+      res.status(StatusCodes.OK).json(updatedTask);
     } catch (err) {
       next(err);
     }
