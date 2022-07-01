@@ -21,8 +21,8 @@ export default class Repository implements ITasksModel {
     return tasks;
   }
 
-  async updateTask(data: Task) {
-    const { id, name, description, status } = data;
+  async updateTask(data: Task, id: string) {
+    const { name, description, status } = data;
     const updateResult = await this.model.update({ name, description, status }, { where: { id } });
     return updateResult;
   }
