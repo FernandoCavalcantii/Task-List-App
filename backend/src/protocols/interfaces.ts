@@ -11,7 +11,7 @@ export interface ITasksModel {
   createTask(data: Omit<Task, 'id'>): Promise<Task>;
   readTaskByPk(id: number): Promise<Task | null>;
   readTasks(): Promise<Task[]>;
-  updateTask(data: Task): Promise<any>;
+  updateTask(data: Task, id: string): Promise<any>;
   deleteTask(id: number): Promise<void>;
 }
 
@@ -20,7 +20,7 @@ export interface ITasksService {
   createTask(data: Omit<Task, 'id'>): Promise<Task>;
   readTaskByPk(id: number): Promise<Task | null>;
   readTasks(): Promise<Task[]>;
-  updateTask(data: Task): Promise<void>;
+  updateTask(data: Task, id: string): Promise<void>;
   deleteTask(id: number): Promise<void>;
 }
 

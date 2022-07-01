@@ -11,8 +11,8 @@ class TasksController implements ITasksController {
 
   async updateTask(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const { body } = req;
-      const updatedTask = this.tasksService.updateTask(body);
+      const { body, params: { id } } = req;
+      const updatedTask = this.tasksService.updateTask(body, id);
       res.status(StatusCodes.CREATED).json(updatedTask);
     } catch (err) {
       next(err);

@@ -5,10 +5,10 @@ const tasksRouter = Router();
 
 const tasksController = new Factory();
 
-const tasks = '/tasks';
-// const tasksSlashId = '/tasks/:id';
+// const tasks = '/tasks';
+const tasksSlashId = '/tasks/:id';
 
-tasksRouter.patch(tasks, (req, res, next) => {
+tasksRouter.patch(tasksSlashId, (req, res, next) => {
     tasksController.tasksFactory().updateTask(req, res, next);
 });
 
