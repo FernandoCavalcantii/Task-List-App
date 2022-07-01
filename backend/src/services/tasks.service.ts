@@ -33,7 +33,7 @@ class Service implements ITasksService {
     return tasks;
   }
 
-  async readTaskByPk(id: number): Promise<Task | null> {
+  async readTaskByPk(id: string): Promise<Task | null> {
     const task = await this.tasksModel.readTaskByPk(id);
     if (!task) throw new ErrorObj(StatusCodes.NOT_FOUND, 'Task id not found');
     return task;
@@ -45,8 +45,9 @@ class Service implements ITasksService {
     if (!fail) throw new ErrorObj(StatusCodes.NOT_FOUND, 'Task id not found');
   }
 
-  async deleteTask(id: number): Promise<void> {
+  async deleteTask(id: string): Promise<void> {
     const deletedTask = await this.tasksModel.deleteTask(id);
+    if (!deletedTask) throw new ErrorObj(StatusCodes.NOT_FOUND, 'Task id not found');
   }
 }
 

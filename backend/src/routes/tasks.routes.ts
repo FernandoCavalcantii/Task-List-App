@@ -12,4 +12,8 @@ tasksRouter.patch(tasksSlashId, (req, res, next) => {
     tasksController.tasksFactory().updateTask(req, res, next);
 });
 
+tasksRouter.delete(tasksSlashId, (req, res, next) => {
+    tasksController.tasksFactory().deleteTask(req, res, next);
+});
+
 export default tasksRouter;

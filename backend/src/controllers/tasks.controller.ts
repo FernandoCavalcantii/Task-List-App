@@ -18,6 +18,16 @@ class TasksController implements ITasksController {
       next(err);
     }
   }
+
+  async deleteTask(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const { params: { id } } = req;
+      await this.tasksService.deleteTask(id);
+      res.status(StatusCodes.OK).send('Task deleted successfully')
+    } catch (err) {
+      next(err);
+    }
+  }
 }
 
 export default TasksController;

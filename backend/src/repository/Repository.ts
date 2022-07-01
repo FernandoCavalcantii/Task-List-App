@@ -11,7 +11,7 @@ export default class Repository implements ITasksModel {
     return task;
   }
 
-  async readTaskByPk(id: number): Promise<Task | null> {
+  async readTaskByPk(id: string): Promise<Task | null> {
     const task = await this.model.findByPk(id);
     return task;
   }
@@ -27,7 +27,7 @@ export default class Repository implements ITasksModel {
     return updateResult;
   }
 
-  async deleteTask(id: number): Promise<number> {
+  async deleteTask(id: string): Promise<number> {
     const deleteResult = await this.model.destroy({ where: { id } });
     return deleteResult;
   }
