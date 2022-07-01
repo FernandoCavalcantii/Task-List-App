@@ -41,7 +41,8 @@ class Service implements ITasksService {
 
   async updateTask(data: Task, id: string): Promise<void> {
     const updatedTask = await this.tasksModel.updateTask(data, id);
-    console.log('updatedTask', updatedTask, typeof updatedTask)
+    const [fail] = updatedTask;
+    if (!fail) throw new ErrorObj(StatusCodes.NOT_FOUND, 'Task id not found');
   }
 
   async deleteTask(id: number): Promise<void> {
