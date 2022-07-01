@@ -19,6 +19,15 @@ class TasksController implements ITasksController {
     }
   }
 
+  async readTasks(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const tasks = await this.tasksService.readTasks();
+      res.status(StatusCodes.OK).json(tasks);
+    } catch (err) {
+      next(err);
+    }
+  }
+
   async updateTask(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const { body, params: { id } } = req;

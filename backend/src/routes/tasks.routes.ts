@@ -12,6 +12,10 @@ tasksRouter.post(tasks, (req, res, next) => {
     tasksController.tasksFactory().createTask(req, res, next);
 });
 
+tasksRouter.get(tasks, (req, res, next) => {
+    tasksController.tasksFactory().readTasks(req, res, next);
+});
+
 tasksRouter.patch(tasksSlashId, (req, res, next) => {
     tasksController.tasksFactory().updateTask(req, res, next);
 });
