@@ -1,14 +1,23 @@
 import { Response, Request, NextFunction } from 'express';
-import Service from '../services/tasks.service';
-import Repository from '../repository/Repository';
 import { StatusCodes } from 'http-status-codes';
+import { ITasksController, ITasksService } from '../protocols/interfaces';
 
-const Controller = new Service(new Repository());
+class TasksController implements ITasksController {
+  tasksService: ITasksService;
 
-const controller = (req: Request, res: Response, _next: NextFunction) => {
-  const { body } = req;
-  const result = Controller.updateTask(body);
-  return res.status(StatusCodes.CREATED).json(result);
+  constructor(service: ITasksService) {
+    this.tasksService = service;
+  }
+
+  async updateTask(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const { body } = req;
+      const updatedTask = this.tasksService.updateTask(body);
+      res.status(StatusCodes.CREATED).json(updatedTask);
+    } catch (err) {
+      next(err);
+    }
+  }
 }
 
-export default controller;
+export default TasksController;
