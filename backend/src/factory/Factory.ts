@@ -1,5 +1,5 @@
 import TasksController from '../controllers/tasks.controller';
-import TasksModel from '../repository/Repository';
+import TasksModel from '../repository/Tasks.model';
 import TasksService from '../services/tasks.service';
 
 class Factory {
