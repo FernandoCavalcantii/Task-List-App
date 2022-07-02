@@ -13,6 +13,7 @@ export default class Repository implements ITasksModel {
 
   async readTaskByPk(id: string): Promise<Task | null> {
     const task = await this.model.findByPk(id);
+    console.log(task);
     return task;
   }
 
@@ -21,7 +22,7 @@ export default class Repository implements ITasksModel {
     return tasks;
   }
 
-  async updateTask(data: Task, id: string) {
+  async updateTask(data: Omit<Task, 'id'>, id: string) {
     const { name, description, status } = data;
     const updateResult = await this.model.update({ name, description, status }, { where: { id } });
     return updateResult;

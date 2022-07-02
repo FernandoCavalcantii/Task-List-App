@@ -11,23 +11,23 @@ export interface ITasksModel {
   createTask(data: Omit<Task, 'id'>): Promise<Task>;
   readTaskByPk(id: string): Promise<Task | null>;
   readTasks(): Promise<Task[]>;
-  updateTask(data: Task, id: string): Promise<any>;
+  updateTask(data: Omit<Task, 'id'>, id: string): Promise<any>;
   deleteTask(id: string): Promise<number>;
 }
 
 export interface ITasksService {
   tasksModel: ITasksModel;
   createTask(data: Omit<Task, 'id'>): Promise<Task>;
-  readTaskByPk(id: string): Promise<Task | null>;
+  readTaskByPk(id: string): Promise<Task>;
   readTasks(): Promise<Task[]>;
-  updateTask(data: Task, id: string): Promise<void>;
+  updateTask(data: Omit<Task, 'id'>, id: string): Promise<void>;
   deleteTask(id: string): Promise<void>;
 }
 
 export interface ITasksController {
   tasksService: ITasksService
   createTask(req: Request, res: Response, next: NextFunction): Promise<void>
-  // readTaskByPk(req: Request, res: Response, next: NextFunction): Promise<void>
+  readTaskByPk(req: Request, res: Response, next: NextFunction): Promise<void>
   readTasks(req: Request, res: Response, next: NextFunction): Promise<void>
   updateTask(req: Request, res: Response, next: NextFunction): Promise<void>
   deleteTask(req: Request, res: Response, next: NextFunction): Promise<void>

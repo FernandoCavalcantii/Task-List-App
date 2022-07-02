@@ -19,7 +19,17 @@ class TasksController implements ITasksController {
     }
   }
 
-  async readTasks(req: Request, res: Response, next: NextFunction): Promise<void> {
+  async readTaskByPk(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const { params: { id } } = req;
+      const task = await this.tasksService.readTaskByPk(id);
+      res.status(StatusCodes.OK).json(task);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  async readTasks(_req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const tasks = await this.tasksService.readTasks();
       res.status(StatusCodes.OK).json(tasks);
@@ -31,8 +41,8 @@ class TasksController implements ITasksController {
   async updateTask(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const { body, params: { id } } = req;
-      const updatedTask = this.tasksService.updateTask(body, id);
-      res.status(StatusCodes.OK).json(updatedTask);
+      const updatedTask = await this.tasksService.updateTask(body, id);
+      res.status(StatusCodes.OK).send('Task updated successfully');
     } catch (err) {
       next(err);
     }
@@ -42,7 +52,7 @@ class TasksController implements ITasksController {
     try {
       const { params: { id } } = req;
       await this.tasksService.deleteTask(id);
-      res.status(StatusCodes.OK).send('Task deleted successfully')
+      res.status(StatusCodes.OK).send('Task deleted successfully');
     } catch (err) {
       next(err);
     }

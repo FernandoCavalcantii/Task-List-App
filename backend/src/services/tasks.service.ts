@@ -1,6 +1,7 @@
 import { StatusCodes } from 'http-status-codes';
 import ErrorObj from '../helpers/ErrorObj';
 import { ITasksModel, ITasksService, Task } from '../protocols/interfaces';
+import patchValidation from '../validations/patchValidation';
 
 class Service implements ITasksService {
   tasksModel: ITasksModel;
@@ -33,13 +34,15 @@ class Service implements ITasksService {
     return tasks;
   }
 
-  async readTaskByPk(id: string): Promise<Task | null> {
+  async readTaskByPk(id: string): Promise<Task> {
     const task = await this.tasksModel.readTaskByPk(id);
-    if (!task) throw new ErrorObj(StatusCodes.NOT_FOUND, 'Task id not found');
+    if (task === null) throw new ErrorObj(StatusCodes.NOT_FOUND, 'Task id not found');
     return task;
   }
 
-  async updateTask(data: Task, id: string): Promise<void> {
+  async updateTask(data: Omit<Task, 'id'>, id: string): Promise<void> {
+    const { name, description, status } = data;
+    patchValidation(name, description, status);
     const updatedTask = await this.tasksModel.updateTask(data, id);
     const [fail] = updatedTask;
     if (!fail) throw new ErrorObj(StatusCodes.NOT_FOUND, 'Task id not found');
