@@ -7,12 +7,13 @@ export default class Repository implements ITasksModel {
   }
 
   async createTask(data: Omit<Task, 'id'>): Promise<Task> {
-    const task = await this.model.create(data);
-    return task;
+    const { id } = await this.model.create(data);
+    return { id, ...data }
   }
 
-  async readTaskByPk(id: number): Promise<Task | null> {
+  async readTaskByPk(id: string): Promise<Task | null> {
     const task = await this.model.findByPk(id);
+    console.log(task);
     return task;
   }
 
@@ -21,13 +22,14 @@ export default class Repository implements ITasksModel {
     return tasks;
   }
 
-  async updateTask(data: Task, id: string) {
+  async updateTask(data: Omit<Task, 'id'>, id: string) {
     const { name, description, status } = data;
     const updateResult = await this.model.update({ name, description, status }, { where: { id } });
     return updateResult;
   }
 
-  async deleteTask(id: number): Promise<void> {
-    await this.model.destroy({ where: { id } });
+  async deleteTask(id: string): Promise<number> {
+    const deleteResult = await this.model.destroy({ where: { id } });
+    return deleteResult;
   }
 }
