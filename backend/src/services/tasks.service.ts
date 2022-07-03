@@ -41,7 +41,8 @@ class Service implements ITasksService {
   }
 
   async updateTask(data: Omit<Task, 'id'>, id: string): Promise<void> {
-    // const { name, description, status } = data;
+    const { name, description, status } = data;
+    console.log(name);
     // patchValidation(name, description, status);
     const updatedTask = await this.tasksModel.updateTask(data, id);
     const [fail] = updatedTask;

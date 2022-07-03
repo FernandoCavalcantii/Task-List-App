@@ -55,3 +55,13 @@ export interface IUsersModel {
   updateUser(data: Omit<User, 'id'>, id: string): Promise<boolean>
   deleteUser(id: string): Promise<number>
 }
+
+export interface IUsersService {
+  createAdmin(data: Omit<User, 'id'>): Promise<Admin>
+  createUser(data: Omit<User, 'id'>): Promise<User>
+  readUserByPk(id: string): Promise<User | null>
+  readUsers(): Promise<User[]>
+  updateAdmin(id: string): Promise<void>
+  updateUser(data: Omit<User, 'id'>, id: string): Promise<void>
+  deleteUser(id: string): Promise<void>
+}
