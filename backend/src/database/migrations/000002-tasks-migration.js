@@ -15,6 +15,14 @@ module.exports = {
       status: {
         type: Sequelize.STRING,
       },
+      userId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id',
+        },
+        onDelete: 'CASCADE',
+      },
     });
   },
   down: async (queryInterface) => {

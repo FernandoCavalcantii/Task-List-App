@@ -1,7 +1,7 @@
 import Model from '../database/models/Task';
 import { Task, ITasksModel } from '../protocols/interfaces';
 
-export default class Repository implements ITasksModel {
+class TasksModel implements ITasksModel {
   constructor(private model = Model) {
     this.model = model
   }
@@ -13,7 +13,6 @@ export default class Repository implements ITasksModel {
 
   async readTaskByPk(id: string): Promise<Task | null> {
     const task = await this.model.findByPk(id);
-    console.log(task);
     return task;
   }
 
@@ -33,3 +32,5 @@ export default class Repository implements ITasksModel {
     return deleteResult;
   }
 }
+
+export default TasksModel;

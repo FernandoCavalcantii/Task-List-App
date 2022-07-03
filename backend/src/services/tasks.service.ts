@@ -42,7 +42,8 @@ class Service implements ITasksService {
 
   async updateTask(data: Omit<Task, 'id'>, id: string): Promise<void> {
     const { name, description, status } = data;
-    patchValidation(name, description, status);
+    console.log(name);
+    // patchValidation(name, description, status);
     const updatedTask = await this.tasksModel.updateTask(data, id);
     const [fail] = updatedTask;
     if (!fail) throw new ErrorObj(StatusCodes.NOT_FOUND, 'Task id not found');
