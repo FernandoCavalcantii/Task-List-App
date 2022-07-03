@@ -6,6 +6,7 @@ const usersRouter = Router();
 const usersController = new Factory();
 
 const admin = '/admin';
+const adminSlashId = '/admin/:id';
 const users = '/users';
 const usersSlashId = '/users/:id';
 
@@ -25,8 +26,11 @@ usersRouter.get(users, (req, res, next) => {
   usersController.usersFactory().readUsers(req, res, next);
 });
 
+usersRouter.patch(adminSlashId, (req, res, next) => {
+  usersController.usersFactory().updateAdmin(req, res, next);
+});
 
-usersRouter.patch(usersSlashId, (req, res, next) => {
+usersRouter.put(usersSlashId, (req, res, next) => {
   usersController.usersFactory().updateUser(req, res, next);
 });
 
