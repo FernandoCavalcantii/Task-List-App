@@ -5,8 +5,13 @@ const usersRouter = Router();
 
 const usersController = new Factory();
 
+const admin = '/admin';
 const users = '/users';
 const usersSlashId = '/users/:id';
+
+usersRouter.post(admin, (req, res, next) => {
+  usersController.usersFactory().createAdmin(req, res, next);
+});
 
 usersRouter.post(users, (req, res, next) => {
   usersController.usersFactory().createUser(req, res, next);

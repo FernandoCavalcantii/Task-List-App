@@ -27,7 +27,7 @@ class UsersService implements IUsersService {
     nameValidation(name);
     passwordValidation(password);
 
-    const newUser = await this.usersModel.createAdmin(data);
+    const newUser = await this.usersModel.createUser(data);
     return newUser;
   }
 
