@@ -15,9 +15,23 @@ Task.init({
     autoIncrement: true,
     primaryKey: true
   },
-  name: DataTypes.STRING(55),
-  description: DataTypes.STRING(200),
-  status: DataTypes.STRING(11)
+  name: {
+    type: DataTypes.STRING(10),
+    allowNull: false,
+  },
+  description: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  status: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  userId: {
+    type: DataTypes.INTEGER,
+    field: 'user_id',
+    allowNull: false,
+  }
 }, {
   sequelize: db,
   modelName: 'Tasks',
