@@ -21,7 +21,7 @@ tasksRouter.get(tasks, (req, res, next) => {
 });
 
 
-tasksRouter.patch(tasksSlashId, (req, res, next) => {
+tasksRouter.put(tasksSlashId, (req, res, next) => {
     tasksController.tasksFactory().updateTask(req, res, next);
 });
 

@@ -2,6 +2,7 @@ import { StatusCodes } from 'http-status-codes';
 import ErrorObj from '../helpers/ErrorObj';
 import { ITasksModel, ITasksService, Task } from '../protocols/interfaces';
 import patchValidation from '../validations/patchValidation';
+import taskValidation from '../validations/taskValidations';
 
 class Service implements ITasksService {
   tasksModel: ITasksModel;
@@ -13,17 +14,7 @@ class Service implements ITasksService {
   async createTask(data: Omit<Task, 'id'>): Promise<Task> {
     const { name, description, status } = data;
 
-    if (name.length < 4) {
-      throw new ErrorObj(StatusCodes.BAD_REQUEST, 'Name must have at least 4 characters');
-    }
-
-    if (description.length < 8) {
-      throw new ErrorObj(StatusCodes.BAD_REQUEST, 'Description must have at least 8 characters');
-    }
-
-    if (status !== 'Done' && status !== 'In progress' && status !== 'Stopped') {
-      throw new ErrorObj(StatusCodes.BAD_REQUEST, 'Status must be "Done", "In progress" or "Stopped"');
-    }
+    taskValidation(name, description, status);
 
     const newTask = await this.tasksModel.createTask(data);
     return newTask;
