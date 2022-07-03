@@ -16,15 +16,9 @@ User.init({
   },
   name: {
     type: DataTypes.STRING,
-    validate: {
-      max: 50,
-    }
   },
   password: {
     type: DataTypes.STRING,
-    validate: {
-      max: 50,
-    },
   },
   admin: {
     type: DataTypes.BOOLEAN,

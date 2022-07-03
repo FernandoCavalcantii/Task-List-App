@@ -65,3 +65,14 @@ export interface IUsersService {
   updateUser(data: Omit<User, 'id'>, id: string): Promise<void>
   deleteUser(id: string): Promise<void>
 }
+
+export interface IUsersController {
+  usersService: IUsersService
+  createAdmin(req: Request, res: Response, next: NextFunction): Promise<void>
+  createUser(req: Request, res: Response, next: NextFunction): Promise<void>
+  readUserByPk(req: Request, res: Response, next: NextFunction): Promise<void>
+  readUsers(req: Request, res: Response, next: NextFunction): Promise<void>
+  updateAdmin(req: Request, res: Response, next: NextFunction): Promise<void>
+  updateUser(req: Request, res: Response, next: NextFunction): Promise<void>
+  deleteUser(req: Request, res: Response, next: NextFunction): Promise<void>
+}
