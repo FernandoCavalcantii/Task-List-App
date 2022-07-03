@@ -1,7 +1,7 @@
 import { StatusCodes } from 'http-status-codes';
 import ErrorObj from '../helpers/ErrorObj';
 import { Admin, IUsersModel, IUsersService, User } from '../protocols/interfaces';
-import { nameValidation, passwordValidation } from '../validations/userValidations';
+import { nameValidation, passwordValidation, userValidation } from '../validations/userValidations';
 // import patchValidation from '../validations/patchValidation';
 
 class UsersService implements IUsersService {
@@ -14,8 +14,7 @@ class UsersService implements IUsersService {
   async createAdmin(data: Omit<User, 'id'>): Promise<Admin> {
     const { name, password } = data;
 
-    nameValidation(name);
-    passwordValidation(password);
+    userValidation(name, password);
 
     const newAdmin = await this.usersModel.createAdmin(data);
     return newAdmin;
@@ -24,8 +23,7 @@ class UsersService implements IUsersService {
   async createUser(data: Omit<User, 'id'>): Promise<User> {
     const { name, password } = data;
 
-    nameValidation(name);
-    passwordValidation(password);
+    userValidation(name, password);
 
     const newUser = await this.usersModel.createUser(data);
     return newUser;
@@ -49,8 +47,15 @@ class UsersService implements IUsersService {
   }
 
   async updateUser(data: Omit<User, 'id'>, id: string): Promise<void> {
-    const { name } = data;
+    const { name, password } = data;
+
     nameValidation(name);
+    passwordValidation(password);
+
+    if (name === undefined && password === undefined) {
+      throw new ErrorObj(StatusCodes.BAD_REQUEST, 'Both fields cannot be empty');
+    }
+
     const updatedUser = await this.usersModel.updateUser(data, id);
     if (!updatedUser) throw new ErrorObj(StatusCodes.NOT_FOUND, 'User id not found');
   }

@@ -30,8 +30,7 @@ usersRouter.patch(adminSlashId, (req, res, next) => {
   usersController.usersFactory().updateAdmin(req, res, next);
 });
 
-
-usersRouter.patch(usersSlashId, (req, res, next) => {
+usersRouter.put(usersSlashId, (req, res, next) => {
   usersController.usersFactory().updateUser(req, res, next);
 });
 
