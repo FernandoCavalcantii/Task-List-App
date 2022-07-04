@@ -1,5 +1,8 @@
+import cors = require('cors');
+
 import * as express from 'express';
 import errorMiddleware from './middlewares/ErrorMiddleware';
+import loginRouter from './routes/login.routes';
 import tasksRouter from './routes/tasks.routes';
 import usersRouter from './routes/users.routes';
 
@@ -20,9 +23,11 @@ class App {
     };
 
     this.app.use(express.json());
+    this.app.use(cors);
     this.app.use(accessControl);
     this.app.use(tasksRouter);
     this.app.use(usersRouter);
+    this.app.use(loginRouter);
     this.app.use(errorMiddleware);
   }
 
