@@ -35,7 +35,6 @@ usersRouter.patch(adminSlashId, admin.adminValidation, (req, res, next) => {
 });
 
 usersRouter.put(usersSlashId, token.authToken, (req, res, next) => {
-
   usersController.usersFactory().updateUser(req, res, next);
 });
 

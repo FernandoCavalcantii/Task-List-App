@@ -1,8 +1,7 @@
 import { StatusCodes } from 'http-status-codes';
 import ErrorObj from '../helpers/ErrorObj';
 import { Admin, IUsersModel, IUsersService, User } from '../protocols/interfaces';
-import { nameValidation, passwordValidation, userValidation } from '../validations/userValidations';
-
+import { nameValidation, passwordValidation } from '../validations/userValidations';
 
 class UsersService implements IUsersService {
   usersModel: IUsersModel;
