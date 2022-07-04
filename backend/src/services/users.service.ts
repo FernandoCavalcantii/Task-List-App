@@ -3,6 +3,7 @@ import ErrorObj from '../helpers/ErrorObj';
 import { Admin, IUsersModel, IUsersService, User } from '../protocols/interfaces';
 import { nameValidation, passwordValidation, userValidation } from '../validations/userValidations';
 
+
 class UsersService implements IUsersService {
   usersModel: IUsersModel;
 
@@ -13,7 +14,8 @@ class UsersService implements IUsersService {
   async createAdmin(data: Omit<User, 'id'>): Promise<Admin> {
     const { name, password } = data;
 
-    userValidation(name, password);
+    nameValidation(name);
+    passwordValidation(password);
 
     const userExist = await this.usersModel.readUserByName(name);
 
@@ -26,7 +28,8 @@ class UsersService implements IUsersService {
   async createUser(data: Omit<User, 'id'>): Promise<User> {
     const { name, password } = data;
 
-    userValidation(name, password);
+    nameValidation(name);
+    passwordValidation(password);
 
     const userExist = await this.usersModel.readUserByName(name);
 
@@ -58,12 +61,6 @@ class UsersService implements IUsersService {
     const { name, password } = data;
 
     nameValidation(name);
-    passwordValidation(password);
-
-    if (name === undefined && password === undefined) {
-      throw new ErrorObj(StatusCodes.BAD_REQUEST, 'Both fields cannot be empty');
-    }
-
     const updatedUser = await this.usersModel.updateUser(data, id);
     if (!updatedUser) throw new ErrorObj(StatusCodes.NOT_FOUND, 'User id not found');
   }
