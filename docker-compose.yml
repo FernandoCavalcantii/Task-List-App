@@ -11,19 +11,20 @@ services:
       - 3001:3001
     volumes:
       - ./backend:/app/back
-    # healthcheck:
-    #   test: ["CMD", "lsof", "-t", "-i:3001"]
-    #   timeout: 10s
-    #   retries: 5
+    healthcheck:
+      test: ["CMD", "lsof", "-t", "-i:3001"]
+      timeout: 10s
+      retries: 5
     depends_on:
-      - 'dataDb'
-        # condition: service_healthy
+      dataDb:
+        condition: service_healthy
     tty: true
     stdin_open: true
 
   # frontend:
   #   build: ./frontend
   #   container_name: 'app_frontend'
+  #   restart: 'always'
   #   ports:
   #     - 3000:3000
 
@@ -37,11 +38,11 @@ services:
     ports:
       - 3306:3306
     restart: 'always'
-    # healthcheck:
-    #   test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-    #   timeout: 10s
-    #   retries: 5
-    # cap_add:
-    #   - SYS_NICE
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 5
+    cap_add:
+      - SYS_NICE
 
     
