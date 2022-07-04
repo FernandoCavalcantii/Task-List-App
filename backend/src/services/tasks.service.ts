@@ -1,7 +1,8 @@
 import { StatusCodes } from 'http-status-codes';
 import ErrorObj from '../helpers/ErrorObj';
 import { ITasksModel, ITasksService, Task } from '../protocols/interfaces';
-import patchValidation from '../validations/patchValidation';
+// import patchValidation from '../validations/patchValidation';
+import taskValidation from '../validations/taskValidations';
 
 class Service implements ITasksService {
   tasksModel: ITasksModel;
@@ -11,25 +12,17 @@ class Service implements ITasksService {
   }
 
   async createTask(data: Omit<Task, 'id'>): Promise<Task> {
+    // Feature to create: user can only create tasks for his own user. Can implement this by getting the user ID through req.user.
     const { name, description, status } = data;
 
-    if (name.length < 4) {
-      throw new ErrorObj(StatusCodes.BAD_REQUEST, 'Name must have at least 4 characters');
-    }
-
-    if (description.length < 8) {
-      throw new ErrorObj(StatusCodes.BAD_REQUEST, 'Description must have at least 8 characters');
-    }
-
-    if (status !== 'Done' && status !== 'In progress' && status !== 'Stopped') {
-      throw new ErrorObj(StatusCodes.BAD_REQUEST, 'Status must be "Done", "In progress" or "Stopped"');
-    }
+    taskValidation(name, description, status);
 
     const newTask = await this.tasksModel.createTask(data);
     return newTask;
   }
 
   async readTasks(): Promise<Task[]> {
+    // Feature to create: user can only see his own tasks.
     const tasks = await this.tasksModel.readTasks();
     return tasks;
   }
@@ -41,15 +34,14 @@ class Service implements ITasksService {
   }
 
   async updateTask(data: Omit<Task, 'id'>, id: string): Promise<void> {
-    const { name, description, status } = data;
-    console.log(name);
-    // patchValidation(name, description, status);
+    // Feature to create: user can only update his own tasks. Can implement this by getting the user ID through req.user.
     const updatedTask = await this.tasksModel.updateTask(data, id);
     const [fail] = updatedTask;
     if (!fail) throw new ErrorObj(StatusCodes.NOT_FOUND, 'Task id not found');
   }
 
   async deleteTask(id: string): Promise<void> {
+    // Feature to create: user can only delete his own tasks. Can implement this by getting the user ID through req.user.
     const deletedTask = await this.tasksModel.deleteTask(id);
     if (!deletedTask) throw new ErrorObj(StatusCodes.NOT_FOUND, 'Task id not found');
   }

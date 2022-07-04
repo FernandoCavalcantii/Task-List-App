@@ -1,8 +1,8 @@
 import { StatusCodes } from 'http-status-codes';
 import ErrorObj from '../helpers/ErrorObj';
 import { Admin, IUsersModel, IUsersService, User } from '../protocols/interfaces';
-import { nameValidation, passwordValidation } from '../validations/userValidations';
-// import patchValidation from '../validations/patchValidation';
+import { nameValidation, passwordValidation, userValidation } from '../validations/userValidations';
+
 
 class UsersService implements IUsersService {
   usersModel: IUsersModel;
@@ -17,6 +17,10 @@ class UsersService implements IUsersService {
     nameValidation(name);
     passwordValidation(password);
 
+    const userExist = await this.usersModel.readUserByName(name);
+
+    if (userExist) throw new ErrorObj(StatusCodes.CONFLICT, 'Name already exists');
+
     const newAdmin = await this.usersModel.createAdmin(data);
     return newAdmin;
   }
@@ -26,6 +30,10 @@ class UsersService implements IUsersService {
 
     nameValidation(name);
     passwordValidation(password);
+
+    const userExist = await this.usersModel.readUserByName(name);
+
+    if (userExist) throw new ErrorObj(StatusCodes.CONFLICT, 'Name already exists');
 
     const newUser = await this.usersModel.createUser(data);
     return newUser;
@@ -49,13 +57,17 @@ class UsersService implements IUsersService {
   }
 
   async updateUser(data: Omit<User, 'id'>, id: string): Promise<void> {
-    const { name } = data;
+    // Features to create: user can only update a user with the same ID.
+    const { name, password } = data;
+
     nameValidation(name);
     const updatedUser = await this.usersModel.updateUser(data, id);
     if (!updatedUser) throw new ErrorObj(StatusCodes.NOT_FOUND, 'User id not found');
   }
 
   async deleteUser(id: string): Promise<void> {
+    // Feature to create: user can only delete his own user.
+    // Admin can delete non admin users.
     const deletedUser = await this.usersModel.deleteUser(id);
     if (!deletedUser) throw new ErrorObj(StatusCodes.NOT_FOUND, 'User id not found');
   }
