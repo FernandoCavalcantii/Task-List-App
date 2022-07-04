@@ -7,17 +7,24 @@ class UsersModel implements IUsersModel {
   }
 
   async createAdmin(data: Omit<User, 'id'>): Promise<Admin> {
-    const { id } = await this.model.create(data);
-    return { id, ...data, admin: true }
+    const newAdmin = { ...data, admin: true };
+    const { id } = await this.model.create(newAdmin);
+    return { id, ...newAdmin };
   }
 
   async createUser(data: Omit<User, 'id'>): Promise<User> {
-    const { id } = await this.model.create(data);
-    return { id, ...data }
+    const newUser = { ...data, admin: false };
+    const { id } = await this.model.create(newUser);
+    return { id, ...data };
   }
 
   async readUserByPk(id: string): Promise<User | null> {
     const user = await this.model.findByPk(id);
+    return user;
+  }
+
+  async readUserByName(name: string): Promise<Admin | null> {
+    const user = await this.model.findOne({ where: { name } });
     return user;
   }
 

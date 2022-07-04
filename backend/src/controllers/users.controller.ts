@@ -1,4 +1,4 @@
-import { Response, Request, NextFunction } from 'express';
+import { Response, NextFunction, Request } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { IUsersController, IUsersService } from '../protocols/interfaces';
 
@@ -20,6 +20,16 @@ class UsersController implements IUsersController {
   }
 
   async createUser(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const { body } = req;
+      const newUser = await this.usersService.createUser(body);
+      res.status(StatusCodes.CREATED).json(newUser);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  async login(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const { body } = req;
       const newUser = await this.usersService.createUser(body);

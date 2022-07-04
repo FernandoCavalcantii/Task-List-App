@@ -50,6 +50,7 @@ export interface IUsersModel {
   createAdmin(data: Omit<User, 'id'>): Promise<Admin>
   createUser(data: Omit<User, 'id'>): Promise<User>
   readUserByPk(id: string): Promise<User | null>
+  readUserByName(name: string): Promise<User | null>
   readUsers(): Promise<User[]>
   updateAdmin(id: string): Promise<number>
   updateUser(data: Omit<User, 'id'>, id: string): Promise<boolean>
@@ -70,9 +71,31 @@ export interface IUsersController {
   usersService: IUsersService
   createAdmin(req: Request, res: Response, next: NextFunction): Promise<void>
   createUser(req: Request, res: Response, next: NextFunction): Promise<void>
+  login(req: Request, res: Response, next: NextFunction): Promise<void>
   readUserByPk(req: Request, res: Response, next: NextFunction): Promise<void>
   readUsers(req: Request, res: Response, next: NextFunction): Promise<void>
   updateAdmin(req: Request, res: Response, next: NextFunction): Promise<void>
   updateUser(req: Request, res: Response, next: NextFunction): Promise<void>
   deleteUser(req: Request, res: Response, next: NextFunction): Promise<void>
+}
+
+export interface CustomRequest extends Request {
+  token: string,
+}
+
+export interface LoginInfo {
+  name: string,
+  password: string,
+}
+
+export interface ILogin {
+  loginValidation(req: Request, _res: Response, next: NextFunction): Promise<void>
+}
+
+export interface IToken {
+  authToken(req: Request, _res: Response, next: NextFunction): Promise<void>
+}
+
+export interface IAdmin {
+  adminValidation(req: Request, _res: Response, next: NextFunction): Promise<void>
 }

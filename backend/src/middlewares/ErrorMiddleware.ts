@@ -19,7 +19,7 @@ const errorMiddleware = (
     res.status(err.code).json({ message: err.message });
   } else {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: 'Server encountered an unexpected error. We are working on it!' });
-    console.log(err.message);
+    console.log(err);
   }
 
   next();
