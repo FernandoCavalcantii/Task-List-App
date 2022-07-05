@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import LoginContext from '../../Context/Login/LoginContext';
 import { useHistory } from 'react-router-dom';
 import style from './style.module.css';
-const axios = require('axios');
+import API from '../../Api/api';
 
 const Header = () => {
   const { userName, setUserName } = useContext(LoginContext);
@@ -28,9 +28,21 @@ const Header = () => {
   };
 
   const login = async () => {
-    axios
-      .post('http://localhost:3001/login', { name: userName, password })
-      .then((response) => console.log(response));
+    const data = {
+      name: userName,
+      password,
+    };
+
+    const headers = {
+      'Access-Control-Allow-Origin': '*',
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    };
+
+    console.log('oi');
+    const response = await API.post('/login', data, { headers });
+    console.log('oi2');
+
     localStorage.setItem('user', userName);
   };
 
