@@ -23,7 +23,7 @@ class App {
     };
 
     this.app.use(express.json());
-    this.app.use(cors);
+    this.app.use(cors());
     this.app.use(accessControl);
     this.app.use(tasksRouter);
     this.app.use(usersRouter);

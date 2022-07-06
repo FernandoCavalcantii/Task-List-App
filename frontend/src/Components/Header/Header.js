@@ -2,7 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import LoginContext from '../../Context/Login/LoginContext';
 import { useHistory } from 'react-router-dom';
 import style from './style.module.css';
-import API from '../../Api/api';
+// import API from '../../Api/api';
+import fetch from 'node-fetch';
+
+const URL = 'http://localhost:3001';
 
 const Header = () => {
   const { userName, setUserName } = useContext(LoginContext);
@@ -39,9 +42,15 @@ const Header = () => {
       'Content-Type': 'application/json',
     };
 
-    console.log('oi');
-    const response = await API.post('/login', data, { headers });
-    console.log('oi2');
+    const response = await fetch(URL, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers,
+    })
+      .then((res) => res.json())
+      .then((json) => console.log(json));
+
+    console.log(response);
 
     localStorage.setItem('user', userName);
   };
