@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom';
 import style from './style.module.css';
 import API from '../../Api/api';
 
+const LOGIN_URL = 'http://localhost:3001/login';
+
 const Header = () => {
   const { userName, setUserName } = useContext(LoginContext);
   const [password, setPassword] = useState('');
@@ -33,17 +35,14 @@ const Header = () => {
       password,
     };
 
-    const headers = {
-      'Access-Control-Allow-Origin': '*',
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    };
+    await axios
+      .post(LOGIN_URL, data)
+      .then((res) => localStorage.setItem('token', res.data.token));
 
-    console.log('oi');
-    const response = await API.post('/login', data, { headers });
-    console.log('oi2');
 
     localStorage.setItem('user', userName);
+
+    history.push('/tasks');
   };
 
   const logout = () => {

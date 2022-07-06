@@ -2,11 +2,11 @@ import { StatusCodes } from "http-status-codes";
 import ErrorObj from "../helpers/ErrorObj";
 
 const taskValidation = (name: string, description: string, status: string) => {
-  if (!name) throw new ErrorObj(StatusCodes.BAD_REQUEST, 'Fiel "name" is required');
+  if (!name) throw new ErrorObj(StatusCodes.BAD_REQUEST, 'Field "name" is required');
 
   if (name.length < 4) throw new ErrorObj(StatusCodes.BAD_REQUEST, 'Name must have at least 4 characters');
 
-  if (!description) throw new ErrorObj(StatusCodes.BAD_REQUEST, 'Field "description is required');
+  if (!description) throw new ErrorObj(StatusCodes.BAD_REQUEST, 'Field "description" is required');
 
   if (description.length < 8) {
     throw new ErrorObj(StatusCodes.BAD_REQUEST, 'Description must have at least 8 characters');
