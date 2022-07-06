@@ -33,7 +33,7 @@ describe("Test", async function () {
     test("2- Throws an error, code 400, message 'Field \"name\" is required, when property name is undefined", async () => {
       const data = {
         name: undefined,
-        description: "nilo test",
+        description: "Test test",
         status: "Done",
         userId: 3
       }
