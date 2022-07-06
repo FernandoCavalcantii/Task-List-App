@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom';
 import style from './style.module.css';
 const axios = require('axios');
 
+const LOGIN_URL = 'http://localhost:3001/login';
+
 const Header = () => {
   const { userName, setUserName } = useContext(LoginContext);
   const [password, setPassword] = useState('');
@@ -28,10 +30,18 @@ const Header = () => {
   };
 
   const login = async () => {
-    axios
-      .post('http://localhost:3001/login', { name: userName, password })
-      .then((response) => console.log(response));
+    const data = {
+      name: userName,
+      password,
+    };
+
+    await axios
+      .post(LOGIN_URL, data)
+      .then((res) => localStorage.setItem('token', res.data.token));
+
     localStorage.setItem('user', userName);
+
+    history.push('/tasks');
   };
 
   const logout = () => {

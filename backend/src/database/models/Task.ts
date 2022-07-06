@@ -7,6 +7,7 @@ class Task extends Model {
   public name!: string;
   public description: string;
   public status: Status;
+  public userId: number
 }
 
 Task.init({

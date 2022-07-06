@@ -1,7 +1,6 @@
 import { StatusCodes } from 'http-status-codes';
 import ErrorObj from '../helpers/ErrorObj';
 import { ITasksModel, ITasksService, Task } from '../protocols/interfaces';
-// import patchValidation from '../validations/patchValidation';
 import taskValidation from '../validations/taskValidations';
 
 class Service implements ITasksService {
