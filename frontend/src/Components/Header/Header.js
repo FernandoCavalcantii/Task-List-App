@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import LoginContext from '../../Context/Login/LoginContext';
 import { useHistory } from 'react-router-dom';
 import style from './style.module.css';
-const axios = require('axios');
+import API from '../../Api/api';
 
 const LOGIN_URL = 'http://localhost:3001/login';
 
@@ -38,6 +38,7 @@ const Header = () => {
     await axios
       .post(LOGIN_URL, data)
       .then((res) => localStorage.setItem('token', res.data.token));
+
 
     localStorage.setItem('user', userName);
 
