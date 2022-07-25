@@ -29,7 +29,7 @@ Existem usuários comuns e administradores, existindo as funcionalides:
 - Mocha.
 - Chai.
 - Sinon.
-- Reacy. 
+- React. 
 - HTML/CSS.
 
 </details>
