@@ -3,11 +3,11 @@
 
 ## Welcome to Task List App's repository!
 
-Project developed during Trybe's Blitz, in order to create a tasks organizer, connecting database, Back-end and Front-end.
+Task List App is a tasks organizer app, that connects database, Back-end and Front-end.
 
 ### Description
 
-Project developed durint Trybe's Blitz. The app is a tasks organizer, where the user can give a name, description and choose a status ("Done", "In progress" and "Stopped") for the task. Made up by 02 pages, login and tasks. The application was built from the start, connecting a database, Back-end and Front-end.
+Project developed durint Trybe's Blitz. The user can give a name, description and choose a status ("Done", "In progress" and "Stopped") for the task. Made up by two pages: Login and Tasks. The application was built from the start, connecting a database, Back-end and Front-end.
 
 There is commun users and admins, existing functionalities:
 
@@ -70,11 +70,11 @@ Although the project is not completed, developing it, I felt satisfied with my d
 
 ## Bem vindo(a) ao repositório do Task List App!
 
-Projeto desenvolvido durante a Blitz da Trybe, com o intuito de criar um organizador de tarefas, conectando banco de dados, Back-end e Front-end.
+Task List App é um organizador de tarefas, que conecta banco de dados, Back-end e Front-end.
 
 ### Descrição
 
-Projeto desenvolvido durante a Blitz da Trybe. A aplicação trata-se de um gerenciador de tarefas, onde o usuário pode dar um nome, uma descrição e escolher o status ("Done", "In progress" e "Stopped") para a tarefa. É composto por duas telas, a página de Login e a página das tarefas. A aplicação foi desenvolvida desde o início, fazendo a conexão entre um banco de dados, Back-end e Front-end.
+Projeto desenvolvido durante a Blitz da Trybe. O usuário pode dar um nome, descrição e escolher o status ("Done", "In progress" e "Stopped") para a tarefa. É composto por duas telas: Login e Tasks (tarefas). A aplicação foi desenvolvida desde o início, fazendo a conexão entre um banco de dados, Back-end e Front-end.
 
 Existem usuários comuns e administradores, existindo as funcionalides:
 
@@ -83,7 +83,7 @@ Existem usuários comuns e administradores, existindo as funcionalides:
 - Funcionalidades de tarefas: criar, ler, atualizar e deletar tarefa(s).
 
 <details>
-<summary><strong>Tecnologias Utilizadas</strong></summary><br />
+<summary><strong>Tecnologias utilizadas</strong></summary><br />
 
 - MySQL.
 - Docker.
@@ -130,14 +130,14 @@ Existem usuários comuns e administradores, existindo as funcionalides:
 </details>
 
 <details>
-<summary><strong>Status do progresso</strong></summary>
+<summary><strong>Status do progresso</strong></summary><br />
 
 O projeto não foi ainda totalmente finalizado. O banco de dados e o Back-end estão prontos (os testes do back estão parcialmente feitos), faltando finalizar parte do Front-end e testes.
 
 </details>
 
 <details>
-<summary><strong>Considerações</strong></summary>
+<summary><strong>Considerações</strong></summary><br />
 
 Apesar de o projeto não estar concluído, ao desenvolver-lo, me senti bastante satisfeito com meu progresso na área de desenvolvimento, sendo capaz de elaborar um aplicativo que conecta banco de dados, Front-end e Back-end.
 
