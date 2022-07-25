@@ -2,9 +2,7 @@
 
 Projeto desenvolvido durante a Blitz da Trybe, com o intuito de criar um organizador de tarefas utilizando banco de dados, Back-end e Front-end.
 
-
-<details>
-<summary><strong>Descrição</strong></summary><br />
+### Descrição
 
 Projeto desenvolvido durante a Blitz da Trybe. A aplicação trata-se de um gerenciador de tarefas, onde o usuário pode dar um nome, uma descrição e escolher o status ("Done", "In progress" e "Stopped") para a tarefa. É composto por duas telas, a página de Login e a página das tarefas. A aplicação foi desenvolvida desde o início, fazendo a conexão entre um banco de dados, Back-end e Front-end.
 
