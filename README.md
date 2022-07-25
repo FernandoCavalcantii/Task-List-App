@@ -20,6 +20,7 @@ Existem usuários comuns e administradores, existindo as funcionalides:
 <summary><strong>Tecnologias Utilizadas</strong></summary><br />
 
 - MySQL.
+- Docker.
 - JavaScript.
 - TypeScript.
 - Express.
