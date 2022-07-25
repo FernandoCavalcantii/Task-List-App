@@ -1,6 +1,76 @@
-### Bem vindo(a) ao repositório do Task List App!
+<details>
+<summary><strong>English</strong></summary><br />
 
-Projeto desenvolvido durante a Blitz da Trybe, com o intuito de criar um organizador de tarefas utilizando banco de dados, Back-end e Front-end.
+## Welcome to Task List App's repository!
+
+Project developed during Trybe's Blitz, in order to create a tasks organizer, connecting database, Back-end and Front-end.
+
+### Description
+
+Project developed durint Trybe's Blitz. The app is a tasks organizer, where the user can give a name, description and choose a status ("Done", "In progress" and "Stopped") for the task. Made up by 02 pages, login and tasks. The application was built from the start, connecting a database, Back-end and Front-end.
+
+There is commun users and admins, existing functionalities:
+
+- User: can create administrators (with validation to allow only administrators to create new admins), create commun user, login, read, update, delete user(s). Some of those features goes through token validation.
+
+- Tasks: create, read, update and delete task(s).
+Existem usuários comuns e administradores, existindo as funcionalides:
+
+### Tecnologies used
+
+- MySQL.
+- Docker.
+- JavaScript.
+- TypeScript.
+- Express.
+- Sequelize.
+- JWT.
+- Mocha.
+- Chai.
+- Sinon.
+- React. 
+- HTML/CSS.
+
+### How to use
+
+ 1. Clone repository.
+
+  - `git clone git@github.com:FernandoCavalcantii/Task-List-App.git`
+  
+  2. Enter the clonned folder.
+  
+  - `cd Task-List-App`
+  
+  3. Execut docker-compose.yml.
+  
+  - `docker-compose-up`
+
+  4. Install dependencies.
+
+  - `cd frontend npm install`
+  - `cd ../backend`
+  - `npm install`
+  
+  5. Start.
+  
+  - `npm run dev`
+  - `cd ../frontend`
+  - `npm start`
+
+### Progress Status
+
+The project is not finished yet. Database and Backend are completed (tests are parcially implemented). Still remaing to finish Front-end and tests.
+
+### Considerations
+
+Although the project is not completed, developing it, I felt satisfied with my development progress in the area, being able to create an application that connects database, Back-end and Front-end.
+
+
+</details>
+
+## Bem vindo(a) ao repositório do Task List App!
+
+Projeto desenvolvido durante a Blitz da Trybe, com o intuito de criar um organizador de tarefas, conectando banco de dados, Back-end e Front-end.
 
 ### Descrição
 
@@ -11,8 +81,6 @@ Existem usuários comuns e administradores, existindo as funcionalides:
 - De usuários: como criar administrador (com validação para apenas administradores criarem novos admins), criar usuário comun, login, ler, atualizar, deletar usuário(s). Algumas destas funcionalidades passam por autenticação de token.
 
 - Funcionalidades de tarefas: criar, ler, atualizar e deletar tarefa(s).
-
-</details>
 
 <details>
 <summary><strong>Tecnologias Utilizadas</strong></summary><br />
