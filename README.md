@@ -1,5 +1,5 @@
 <details>
-<summary><strong>English</strong></summary><br />
+<summary><h3>English</h3></summary><br />
 
 ## Welcome to Task List App's repository!
 
@@ -12,14 +12,17 @@ Project developed durint Trybe's Blitz. The user can give a name, description an
 
  
 There is commun users and admins, existing functionalities:
+</p>
 
+<p align="justify">
+ 
 - User: can create administrators (with validation to allow only administrators to create new admins), create commun user, login, read, update, delete user(s). Some of those features goes through token validation.
 
 - Tasks: create, read, update and delete task(s).
-Existem usuários comuns e administradores, existindo as funcionalides:
 </p>
- 
-### Tecnologies used
+
+<details>
+<summary><strong>Tecnologies used</strong></summary><br />
 
 - MySQL.
 - Docker.
@@ -33,8 +36,11 @@ Existem usuários comuns e administradores, existindo as funcionalides:
 - Sinon.
 - React. 
 - HTML/CSS.
+</details>
 
-### How to use
+<details>
+<summary><strong>How to use</strong></summary><br />
+ 
 
  1. Clone repository.
 
@@ -59,18 +65,24 @@ Existem usuários comuns e administradores, existindo as funcionalides:
   - `npm run dev`
   - `cd ../frontend`
   - `npm start`
+</details>
 
-### Progress Status
+<details>
+<summary><strong>Progress Status</strong></summary><br />
  
 <p align="justify">
 The project is not finished yet. Database and Backend are completed (tests are parcially implemented). Still remaing to finish Front-end and tests.
 </p>
- 
-### Considerations
+</details>
+
+<details>
+<summary><strong>Considerations</strong></summary><br />
+### 
 
  <p align="justify">
 Although the project is not completed, developing it, I felt satisfied with my development progress in the area, being able to create an application that connects database, Back-end and Front-end.
  </p>
+</details>
 
 </details>
 
@@ -82,12 +94,15 @@ Task List App é um organizador de tarefas, que conecta banco de dados, Back-end
 
  <p align="justify">
 Projeto desenvolvido durante a Blitz da Trybe. O usuário pode dar um nome, descrição e escolher o status ("Done", "In progress" e "Stopped") para a tarefa. É composto por duas telas: Login e Tasks (tarefas). A aplicação foi desenvolvida desde o início, fazendo a conexão entre um banco de dados, Back-end e Front-end.
+</p>
 
-Existem usuários comuns e administradores, existindo as funcionalides:
+Existem usuários comuns e administradores, existindo as <strong>funcionalides</strong>:
 
+ <p align="justify">
 - De usuários: como criar administrador (com validação para apenas administradores criarem novos admins), criar usuário comun, login, ler, atualizar, deletar usuário(s). Algumas destas funcionalidades passam por autenticação de token.
+</p>
 
-- Funcionalidades de tarefas: criar, ler, atualizar e deletar tarefa(s).
+- De tarefas: criar, ler, atualizar e deletar tarefa(s).
  </p>
  
 <details>
