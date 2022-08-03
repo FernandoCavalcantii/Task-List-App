@@ -8,7 +8,7 @@ Task List App is a tasks organizer app, that connects database, Back-end and Fro
 ### Description
  
 <p align="justify">
-Project developed durint Trybe's Blitz. The user can give a name, description and choose a status ("Done", "In progress" and "Stopped") for the task. Made up by two pages: Login and Tasks. The application was built from the start, connecting a database, Back-end and Front-end.
+Project developed durint Trybe's Blitz. The user can give a name, description and choose a status ("Done", "In progress" and "Stopped") for the task. Made up by <strong>two pages</strong>: <strong>Login</strong> and <strong>Tasks</strong>. The application was built from the start, <strong>connecting a database, Back-end and Front-end</strong>.
 
  
 There is commun users and admins, existing functionalities:
@@ -16,9 +16,9 @@ There is commun users and admins, existing functionalities:
 
 <p align="justify">
  
-- User: can create administrators (with validation to allow only administrators to create new admins), create commun user, login, read, update, delete user(s). Some of those features goes through token validation.
+- <strong>User</strong>: can create administrators (with validation to allow only administrators to create new admins), create commun user, login, read, update, delete user(s). Some of those features goes through token validation.
 
-- Tasks: create, read, update and delete task(s).
+- <strong>Tasks</strong>: create, read, update and delete task(s).
 </p>
 
 <details>
@@ -77,7 +77,6 @@ The project is not finished yet. Database and Backend are completed (tests are p
 
 <details>
 <summary><strong>Considerations</strong></summary><br />
-### 
 
  <p align="justify">
 Although the project is not completed, developing it, I felt satisfied with my development progress in the area, being able to create an application that connects database, Back-end and Front-end.
@@ -93,16 +92,17 @@ Task List App é um organizador de tarefas, que conecta banco de dados, Back-end
 ### Descrição
 
  <p align="justify">
-Projeto desenvolvido durante a Blitz da Trybe. O usuário pode dar um nome, descrição e escolher o status ("Done", "In progress" e "Stopped") para a tarefa. É composto por duas telas: Login e Tasks (tarefas). A aplicação foi desenvolvida desde o início, fazendo a conexão entre um banco de dados, Back-end e Front-end.
+Projeto desenvolvido durante a Blitz da Trybe. O usuário pode dar um nome, descrição e escolher o status ("Done", "In progress" e "Stopped") para a tarefa. É composto por <strong>duas telas: Login e Tasks</strong> (tarefas). A aplicação foi desenvolvida desde o início, <strong>fazendo a conexão entre um banco de dados, Back-end e Front-end</strong>.
 </p>
 
 Existem usuários comuns e administradores, existindo as <strong>funcionalides</strong>:
 
  <p align="justify">
-- De usuários: como criar administrador (com validação para apenas administradores criarem novos admins), criar usuário comun, login, ler, atualizar, deletar usuário(s). Algumas destas funcionalidades passam por autenticação de token.
+ 
+- <strong>De usuários</strong>: como criar administrador (com validação para apenas administradores criarem novos admins), criar usuário comun, login, ler, atualizar, deletar usuário(s). Algumas destas funcionalidades passam por autenticação de token.
 </p>
 
-- De tarefas: criar, ler, atualizar e deletar tarefa(s).
+- <strong>De tarefas</strong>: criar, ler, atualizar e deletar tarefa(s).
  </p>
  
 <details>
