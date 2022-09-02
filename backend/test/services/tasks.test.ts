@@ -24,19 +24,19 @@ describe("Test", async function () {
         description: "Test test",
         status: "Done",
         userId: 1
-      }
+      };
       const result = await service.createTask(data);
 
-      expect(result).is.not.null.true
+      expect(result).is.not.null.true;
     });
 
-    test("2- Throws an error, code 400, message 'Field \"name\" is required, when property name is undefined", async () => {
+    test("2- Throws an error, code 400, message 'Field \"name\" is required', when property name is undefined", async () => {
       const data = {
         name: undefined,
         description: "Test test",
         status: "Done",
         userId: 3
-      }
+      };
 
       await expect(service.createTask(data as any))
         .to.eventually.be.rejectedWith('Field "name" is required')
